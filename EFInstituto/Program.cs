@@ -36,11 +36,23 @@ namespace EFInstituto
         public string CursoDivision { get; set; }
     }
 
+    class Profesor
+    {
+        public int Id { get; set; }
+
+        public string Nombre { get; set; }
+
+        public string Apellido { get; set; }
+
+        public int MateriaId { get; set; }
+    }
+
     class EFInstitutoContext : DbContext
     {
         public DbSet<Maestro> Maestro { get; set; }
         public DbSet<Alumno> Alumno { get; set; }
         public DbSet<Materia> Materia { get; set; }
+        public DbSet<Profesor> Profesor { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -61,9 +73,60 @@ namespace EFInstituto
                 }
 
                 MostrarDatos(context);
+
+                Materia materia = new Materia();
+
+                #region Agregar dato
+                /*Console.Write("Descripción: ");
+                materia.Descripcion = Console.ReadLine();
+
+                Console.Write("Curso Division: ");
+                materia.CursoDivision = Console.ReadLine();
+
+                context.Materia.Add(materia); */
+                #endregion
+
+                #region Modificar dato
+                /*
+                Console.WriteLine("Datos a cambiar");
+                Console.Write("Id Nateria: ");
+                int id = int.Parse(Console.ReadLine());
+
+                materia = context.Materia.Where(x => x.id == id).FirstOrDefault();
+
+                Console.WriteLine("Descripción: {0}", materia.Descripcion);
+                Console.WriteLine("Curso Division: {0}", materia.CursoDivision);
+
+                Console.Write("Descripción: ");
+                materia.Descripcion = Console.ReadLine();
+
+                Console.Write("Curso Division: ");
+                materia.CursoDivision = Console.ReadLine();
+
+                context.SaveChanges();
+                */
+                #endregion
+
+                #region Borrar datos
+                /*
+                Console.WriteLine("Datos a borrar");
+                Console.Write("Id Nateria: ");
+                int id = int.Parse(Console.ReadLine());
+
+                materia = context.Materia.Where(x => x.id == id).FirstOrDefault();
+
+                context.Materia.Remove(materia);
+
+                context.SaveChanges();
+                */
+                #endregion
             }
         }
 
+        /// <summary>
+        /// Metodo para la creación de los la primera vez que se conecta con la DDBB.
+        /// </summary>
+        /// <param name="context">Una instancia de la clase DBContext</param>
         public static void CrearDatos(EFInstitutoContext context)
         {
             #region Agrego Materias.
