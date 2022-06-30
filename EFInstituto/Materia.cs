@@ -11,5 +11,6 @@ namespace EFInstituto
         public string Descripcion { get; set; }
 
         public string CursoDivision { get; set; }
+
     }
 }
