@@ -248,26 +248,25 @@ namespace EFInstituto
 
             List<Maestro> maestro = (List<Maestro>)(from mae in context.Maestro select mae).ToList();
             if (maestro.Any(mae => mae.Id == idMaestro))
-            {
-                Console.WriteLine("Va a eliminar un Maestro, esta seguro? S/N");
-                var input = Console.ReadLine().ToUpper();
+            {  
+                String input;
                 do
                 {
+                    Console.WriteLine("Va a eliminar un Maestro, esta seguro? S/N");
+                    input = Console.ReadLine().ToUpper();
                     switch (input)
                     {
                         case "S":
                             context.Maestro.Remove(context.Maestro.Where(x => x.Id == idMaestro).FirstOrDefault());
                             context.SaveChanges();
-                            Console.ReadKey();
                             break;
                         case "N":
-
                             break;
                         default:
                             Console.WriteLine("Debe ingresar una opcion Correcta: ");
                             break;
                     }
-                } while (input == "S" ^ input == "N");
+                } while (!((input != "S") | (input != "N")));
             }
             else
             {
@@ -286,10 +285,11 @@ namespace EFInstituto
             List<Alumno> alumno = (List<Alumno>)(from alu in context.Alumno select alu).ToList();
             if (alumno.Any(alu => alu.Id == idAlumno))
             {
-                Console.WriteLine("Va a eliminar un Alumno, esta seguro? S/N");
-                var input = Console.ReadLine().ToUpper();
+                String input;
                 do
                 {
+                    Console.WriteLine("Va a eliminar un Alumno, esta seguro? S/N");
+                    input = Console.ReadLine().ToUpper();
                     switch (input)
                     {
                         case "S":
@@ -302,7 +302,7 @@ namespace EFInstituto
                             Console.WriteLine("Debe ingresar una opcion Correcta: ");
                             break;
                     }
-                } while (input == "S" ^ input == "N");
+                } while (!((input != "S") | (input != "N")));
             }
             else
             {
@@ -321,10 +321,11 @@ namespace EFInstituto
             List<Materia> materia = (List<Materia>)(from mat in context.Materia select mat).ToList();
             if (materia.Any(mat => mat.Id == idMateria))
             {
-                Console.WriteLine("Va a eliminar un Materia, esta seguro? S/N");
-                var input = Console.ReadLine().ToUpper();
+                String input;
                 do
                 {
+                    Console.WriteLine("Va a eliminar un Materia, esta seguro? S/N");
+                    input = Console.ReadLine().ToUpper();
                     switch (input)
                     {
                         case "S":
@@ -337,7 +338,7 @@ namespace EFInstituto
                             Console.WriteLine("Debe ingresar una opcion Correcta: ");
                             break;
                     }
-                } while (input == "S" ^ input == "N");
+                } while (!((input != "S") | (input != "N")));
             }
             else
             {
@@ -493,10 +494,11 @@ namespace EFInstituto
                 throw new Exception("*ERROR* ProfesorId inexistente");
             }
 
-            Console.WriteLine("Va a Modificar un Alumno, esta seguro? S/N");
-            var input = Console.ReadLine().ToUpper();
+            String input;
             do
             {
+                Console.WriteLine("Va a Modificar un Alumno, esta seguro? S/N");
+                input = Console.ReadLine().ToUpper();
                 switch (input)
                 {
                     case "S":
@@ -508,7 +510,7 @@ namespace EFInstituto
                         Console.WriteLine("Debe ingresar una opcion Correcta: ");
                         break;
                 }
-            } while (input == "S" ^ input == "N");
+            } while (!((input != "S") | (input != "N")));
         }
 
         private static void ModificarMaterias(EFInstitutoContext context)
@@ -531,10 +533,11 @@ namespace EFInstituto
             Console.Write("Curso Division: ");
             materia.CursoDivision = Console.ReadLine() ?? throw new Exception("El valor Descripcion no puede ser nulo");
 
-            Console.WriteLine("Va a Modificar un Materia, esta seguro? S/N");
-            var input = Console.ReadLine().ToUpper();
+            String input;
             do
             {
+                Console.WriteLine("Va a Modificar un Materia, esta seguro? S/N");
+                input = Console.ReadLine().ToUpper();
                 switch (input)
                 {
                     case "S":
@@ -546,7 +549,7 @@ namespace EFInstituto
                         Console.WriteLine("Debe ingresar una opcion Correcta: ");
                         break;
                 }
-            } while (input == "S" ^ input == "N");
+            } while (!((input != "S") | (input != "N")));
         }
         #endregion
 
